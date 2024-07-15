@@ -1,0 +1,27 @@
+import requests
+from bs4 import BeautifulSoup
+
+def get_number_of_coins():
+    url = "https://coinmarketcap.com/"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Find the element that contains the number of cryptocurrencies
+    coins_data = soup.find('p', class_='sc-1eb5slv-0 hykWbK')
+    if coins_data:
+        # Extract the number from the text
+        number_of_coins = coins_data.text.split()[0].replace(',', '')
+        return int(number_of_coins)
+    else:
+        return None
+
+# Usage
+number_of_coins = get_number_of_coins()
+if number_of_coins:
+    print(f"There are {number_of_coins} cryptocurrencies listed on CoinMarketCap.")
+else:
+    print("Could not retrieve the number of cryptocurrencies.")
