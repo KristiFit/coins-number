@@ -1,5 +1,3 @@
-# coins-number
-
 Explanation:
 Import Libraries: We import the requests library for making HTTP requests and BeautifulSoup from bs4 for parsing HTML content.
 
