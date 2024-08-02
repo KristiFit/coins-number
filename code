@@ -25,3 +25,4 @@ if number_of_coins:
     print(f"There are {number_of_coins} cryptocurrencies listed on CoinMarketCap.")
 else:
     print("Could not retrieve the number of cryptocurrencies.")
+# done
